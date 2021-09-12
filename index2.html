@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      new Vue({
+        template: "<p>{{msg}}</p>",
+        data: {
+          msg: "hello world!",
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

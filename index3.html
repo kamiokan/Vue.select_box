@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Categories -->
+      <label for="category">都道府県</label>
+      <select
+        name="category"
+        v-model="selectedCategory"
+        v-on:change="fetchTags"
+      >
+        <option v-for="category in categories" :value="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+      <br />
+      <!-- Tags -->
+      <div v-if="tags.length > 0">
+        <label for="tag">市区町村</label>
+        <select name="tag" v-model="selectedTag">
+          <option v-for="tag in tags" :value="tag.id">{{ tag.name }}</option>
+        </select>
+      </div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          selectedCategory: "",
+          selectedTag: "",
+          categories: [
+            { id: 1, name: "埼玉県" },
+            { id: 2, name: "兵庫県" },
+          ],
+          tags: [],
+        },
+        methods: {
+          fetchTags: function () {
+            var tmp_tags = [];
+            if (this.selectedCategory == 1) {
+              tmp_tags = [
+                { id: 1, name: "吉川市" },
+                { id: 2, name: "三郷市" },
+                { id: 3, name: "八潮市" },
+                { id: 4, name: "越谷市" },
+                { id: 5, name: "草加市" },
+              ];
+            } else if (this.selectedCategory == 2) {
+              tmp_tags = [
+                { id: 6, name: "川西市" },
+                { id: 7, name: "伊丹市" },
+              ];
+            } else {
+              alert("入力に誤りがあります！");
+            }
+
+            this.tags = tmp_tags;
+          },
+        },
+      });
+
+      //   window.app = app;
+    </script>
+  </body>
+</html>

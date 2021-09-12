@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Categories -->
+      <label for="category">Category</label>
+      <select name="category" v-model="selectedCategory" @change="fetchTags">
+        <option v-for="category in categories" :value="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+      <br />
+      <!-- Tags -->
+      <div v-if="tags.length > 0">
+        <label for="tag">Tag</label>
+        <select name="tag" v-model="selectedTag">
+          <option v-for="tag in tags" :value="tag.id">{{ tag.name }}</option>
+        </select>
+      </div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          selectedCategory: "",
+          selectedTag: "",
+          categories: [
+            { id: 1, name: "Tech" },
+            { id: 2, name: "Design" },
+            { id: 3, name: "Report" },
+          ],
+          tags: [],
+        },
+        methods: {
+          fetchTags: function () {
+            var tmp_tags = [];
+            if (this.selectedCategory == 1) {
+              tmp_tags = [
+                { id: 1, name: "iOS" },
+                { id: 2, name: "Android" },
+                { id: 3, name: "FrontEnd" },
+                { id: 4, name: "BackEnd" },
+                { id: 5, name: "Server" },
+              ];
+            } else if (this.selectedCategory == 2) {
+              tmp_tags = [
+                { id: 6, name: "UI / UX" },
+                { id: 7, name: "Tools" },
+              ];
+            } else if (this.selectedCategory == 3) {
+              tmp_tags = [
+                { id: 8, name: "Events" },
+                { id: 9, name: "Products" },
+              ];
+            } else {
+              alert("Invalid value!!");
+            }
+
+            this.tags = tmp_tags;
+          },
+        },
+      });
+
+      //   window.app = app;
+    </script>
+  </body>
+</html>
