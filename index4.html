@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  </head>
+  <body>
+    <h2 style="font-size: 1.2rem; margin-bottom: 10px">出発地</h2>
+    <div id="app">
+      <!-- PrefectureName -->
+      <div class="prefecture_name">
+        <label for="category">都道府県</label>
+        <select
+          name="category"
+          v-model="selectedPrefectureName"
+          v-on:change="fetchTags"
+        >
+          <option
+            v-for="prefectureName in Object.keys(addressList)"
+            :value="prefectureName"
+          >
+            {{ prefectureName }}
+          </option>
+        </select>
+      </div>
+      <!-- CityNames -->
+      <div class="city_name">
+        <label for="city_name">市区町村</label>
+        <select name="city_name" v-model="selectedCityName">
+          <option v-for="cityName in cityNames" :value="cityName">
+            {{ cityName }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <h2 style="font-size: 1.2rem; margin-bottom: 10px">出発地</h2>
+    <div id="app2">
+      <!-- PrefectureName -->
+      <div class="prefecture_name">
+        <label for="category">都道府県</label>
+        <select
+          name="category"
+          v-model="selectedPrefectureName"
+          v-on:change="fetchTags"
+        >
+          <option
+            v-for="prefectureName in Object.keys(addressList)"
+            :value="prefectureName"
+          >
+            {{ prefectureName }}
+          </option>
+        </select>
+      </div>
+      <!-- CityNames -->
+      <div class="city_name">
+        <label for="city_name">市区町村</label>
+        <select name="city_name" v-model="selectedCityName">
+          <option v-for="cityName in cityNames" :value="cityName">
+            {{ cityName }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <script>
+      const addressList = {
+        埼玉県: [
+          "吉川市",
+          "三郷市",
+          "八潮市",
+          "越谷市",
+          "草加市",
+          "さいたま市",
+          "川口市",
+          "蕨市",
+          "戸田市",
+          "和光市",
+          "朝霞市",
+          "新座市",
+          "川越市",
+          "入間郡",
+          "ふじみ野市",
+          "富士見市",
+          "志木市",
+          "狭山市",
+          "入間市",
+          "所沢市",
+        ],
+        兵庫県: [
+          "川西市",
+          "伊丹市",
+          "尼崎市",
+          "宝塚市",
+          "川辺郡",
+          "三田市",
+          "神戸市",
+          "明石市",
+        ],
+      };
+      let app = new Vue({
+        el: "#app",
+        data: {
+          selectedPrefectureName: "",
+          selectedCityName: "",
+          addressList: addressList,
+          cityNames: [],
+        },
+        methods: {
+          fetchTags: function () {
+            this.cityNames = addressList[this.selectedPrefectureName];
+          },
+        },
+      });
+      let app2 = new Vue({
+        el: "#app2",
+        data: {
+          selectedPrefectureName: "",
+          selectedCityName: "",
+          addressList: addressList,
+          cityNames: [],
+        },
+        methods: {
+          fetchTags: function () {
+            this.cityNames = addressList[this.selectedPrefectureName];
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
