@@ -476,31 +476,31 @@
           "南河内郡千早赤阪村",
         ],
       };
-      $(function () {
-        $('#todouhuken1 select option[value=""]').remove();
-        $('#todouhuken2 select option[value=""]').remove();
-        $('#shikuchoson1 select option[value=""]').remove();
-        $('#shikuchoson2 select option[value=""]').remove();
-        $.each(addressList, function (index, value) {
-          $('#todouhuken1 select').append('<option value="' + index + '">' + index + '</option>');
-          $('#todouhuken2 select').append('<option value="' + index + '">' + index + '</option>');
+      jQuery(function () {
+        jQuery('#todouhuken1 select option[value=""]').remove();
+        jQuery('#todouhuken2 select option[value=""]').remove();
+        jQuery('#shikuchoson1 select option[value=""]').remove();
+        jQuery('#shikuchoson2 select option[value=""]').remove();
+        jQuery.each(addressList, function (index, value) {
+          jQuery('#todouhuken1 select').append('<option value="' + index + '">' + index + '</option>');
+          jQuery('#todouhuken2 select').append('<option value="' + index + '">' + index + '</option>');
         });
-        $.each(addressList['東京都'], function (index, value) {
-          $('#shikuchoson1 select').append('<option value="' + value + '">' + value + '</option>');
-          $('#shikuchoson2 select').append('<option value="' + value + '">' + value + '</option>');
+        jQuery.each(addressList['東京都'], function (index, value) {
+          jQuery('#shikuchoson1 select').append('<option value="' + value + '">' + value + '</option>');
+          jQuery('#shikuchoson2 select').append('<option value="' + value + '">' + value + '</option>');
         });
-        $("#todouhuken1 select").change(function () {
-          $("#shikuchoson1 select").children().remove();
-          let current_val = $(this).val();
-          $.each(addressList[current_val], function (index, value) {
-            $('#shikuchoson1 select').append('<option value="' + value + '">' + value + '</option>');
+        jQuery("#todouhuken1 select").change(function () {
+          jQuery("#shikuchoson1 select").children().remove();
+          let current_val = jQuery(this).val();
+          jQuery.each(addressList[current_val], function (index, value) {
+            jQuery('#shikuchoson1 select').append('<option value="' + value + '">' + value + '</option>');
           });
         });
-        $("#todouhuken2 select").change(function () {
-          $("#shikuchoson2 select").children().remove();
-          let current_val = $(this).val();
-          $.each(addressList[current_val], function (index, value) {
-            $('#shikuchoson2 select').append('<option value="' + value + '">' + value + '</option>');
+        jQuery("#todouhuken2 select").change(function () {
+          jQuery("#shikuchoson2 select").children().remove();
+          let current_val = jQuery(this).val();
+          jQuery.each(addressList[current_val], function (index, value) {
+            jQuery('#shikuchoson2 select').append('<option value="' + value + '">' + value + '</option>');
           });
         });
       });
